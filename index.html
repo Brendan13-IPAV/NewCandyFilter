@@ -1248,11 +1248,11 @@
 
       // Add this after the getRightColor function
 const getRelevancyLevel = (score) => {
-  if (score >= 90) return { level: 'very-high', text: '-' };
-  if (score >= 75) return { level: 'high', text: '-' };
-  if (score >= 50) return { level: 'medium', text: '-' };
-  if (score >= 25) return { level: 'low', text: '-' };
-  return { level: 'very-low', text: '-' };
+  if (score >= 90) return { level: 'very-high', text: '-------' };
+  if (score >= 75) return { level: 'high', text: '-------' };
+  if (score >= 50) return { level: 'medium', text: '-------' };
+  if (score >= 25) return { level: 'low', text: '-------' };
+  return { level: 'very-low', text: '-------' };
 };
       
       // Get preference display text
