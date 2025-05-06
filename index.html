@@ -269,7 +269,20 @@
     .accordion-header:hover {
       background-color: #F9FAFB;
     }
-    
+    .accordion-arrow {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888; /* mid-gray color */
+  margin-right: 8px;
+}
+
+.accordion-title-section {
+  display: flex;
+  align-items: center;
+}
     .accordion-content {
       padding: 16px;
       border: 1px solid var(--border-color);
@@ -1241,31 +1254,32 @@
             <div>
               {/* IP Rights Section */}
               <div className="accordion mb-6">
+               
                 <div 
-                  className="accordion-header"
-                  onClick={() => toggleAccordion('ipRights')}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full border border-gray-300">
-                      {accordions.ipRights ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                    </div>
-                    <span>IP Rights</span>
-                  </div>
-                  
-                  <div>
-                    {selectedRights.length > 0 && (
-                      <span className="text-sm text-gray-500">{selectedRights.length} selected</span>
-                    )}
-                  </div>
-                </div>
+  className="accordion-header"
+  onClick={() => toggleAccordion('ipRights')}
+>
+  <div className="accordion-title-section">
+    <div className="accordion-arrow">
+      {accordions.ipRights ? (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      )}
+    </div>
+    <span>IP Rights</span>
+  </div>
+  
+  <div>
+    {selectedRights.length > 0 && (
+      <span className="text-sm text-gray-500">{selectedRights.length} selected</span>
+    )}
+  </div>
+</div>
                 
                 {accordions.ipRights && (
                   <div className="accordion-content">
@@ -1294,31 +1308,31 @@
               
               {/* Situation Section */}
               <div className="accordion mb-6">
-                <div 
-                  className="accordion-header"
-                  onClick={() => toggleAccordion('situation')}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full border border-gray-300">
-                      {accordions.situation ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                    </div>
-                    <span>Your Situation</span>
-                  </div>
-                  
-                  <div>
-                    {selectedSituations.length > 0 && (
-                      <span className="text-sm text-gray-500">{selectedSituations.length} selected</span>
-                    )}
-                  </div>
-                </div>
+  <div 
+  className="accordion-header"
+  onClick={() => toggleAccordion('situation')}
+>
+  <div className="accordion-title-section">
+    <div className="accordion-arrow">
+      {accordions.situation ? (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      )}
+    </div>
+    <span>Your Situation</span>
+  </div>
+  
+  <div>
+    {selectedSituations.length > 0 && (
+      <span className="text-sm text-gray-500">{selectedSituations.length} selected</span>
+    )}
+  </div>
+</div>
                 
                 {accordions.situation && (
                   <div className="accordion-content">
@@ -1342,31 +1356,31 @@
               
               {/* Preferences Section */}
               <div className="accordion mb-6">
-                <div 
-                  className="accordion-header"
-                  onClick={() => toggleAccordion('preferences')}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full border border-gray-300">
-                      {accordions.preferences ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                    </div>
-                    <span>Your Preferences</span>
-                  </div>
-                  
-                  <div>
-                    {Object.values(preferences).some(v => v !== 0) && (
-                      <span className="text-sm text-gray-500">Preferences set</span>
-                    )}
-                  </div>
-                </div>
+   <div 
+  className="accordion-header"
+  onClick={() => toggleAccordion('preferences')}
+>
+  <div className="accordion-title-section">
+    <div className="accordion-arrow">
+      {accordions.preferences ? (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      )}
+    </div>
+    <span>Your Preferences</span>
+  </div>
+  
+  <div>
+    {Object.values(preferences).some(v => v !== 0) && (
+      <span className="text-sm text-gray-500">Preferences set</span>
+    )}
+  </div>
+</div>
                 
                 {accordions.preferences && (
                   <div className="accordion-content">
