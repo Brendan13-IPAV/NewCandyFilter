@@ -458,6 +458,48 @@
     .radio-button:hover:not(.selected) {
       background-color: #F0F4F8;
     }
+
+    /* Relevancy indicator styles */
+.relevancy-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.relevancy-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.relevancy-very-high {
+  background-color: #22c55e;
+  color: white;
+}
+
+.relevancy-high {
+  background-color: #84cc16;
+  color: white;
+}
+
+.relevancy-medium {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.relevancy-low {
+  background-color: #94a3b8;
+  color: white;
+}
+
+.relevancy-very-low {
+  background-color: #cbd5e1;
+  color: #475569;
+}
+    
   </style>
 </head>
 <body>
@@ -1203,6 +1245,15 @@
         if (right.includes('Copyright')) return 'copyright';
         return 'any';
       };
+
+      // Add this after the getRightColor function
+const getRelevancyLevel = (score) => {
+  if (score >= 90) return { level: 'very-high', text: 'Very High' };
+  if (score >= 75) return { level: 'high', text: 'High' };
+  if (score >= 50) return { level: 'medium', text: 'Medium' };
+  if (score >= 25) return { level: 'low', text: 'Low' };
+  return { level: 'very-low', text: 'Very Low' };
+};
       
       // Get preference display text
       const getPreferenceText = (preference, value) => {
@@ -1575,19 +1626,15 @@
                           
                           {/* Right side - Match details */}
                           <div className="card-right">
+
                             <div>
-                              <div className="match-text">
-                                <span>Match Score</span>
-                                <span className="match-score">{Math.round(strategy.matchScore)}%</span>
-                              </div>
-                              
-                              <div className="match-indicator">
-                                <div 
-                                  className="match-fill" 
-                                  style={{ width: `${Math.round(strategy.matchScore)}%` }}
-                                ></div>
-                              </div>
-                            </div>
+  <div className="relevancy-indicator">
+    <span>Relevancy</span>
+    <span className={`relevancy-badge relevancy-${getRelevancyLevel(strategy.matchScore).level}`}>
+      {getRelevancyLevel(strategy.matchScore).text}
+    </span>
+  </div>
+</div>
                             
                             <div className="match-details">
                               {/* Matches */}
