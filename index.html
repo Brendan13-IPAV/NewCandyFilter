@@ -499,6 +499,32 @@
   background-color: #C1C1C1;
   color: #475569;
 }
+
+    /* Tick marks for sliders */
+.slider-tick-marks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 8px 0;
+  position: relative;
+  height: 20px;
+}
+
+.slider-tick {
+  width: 1px;
+  height: 8px;
+  background-color: var(--border-color);
+  position: relative;
+}
+
+.slider-tick-label {
+  position: absolute;
+  font-size: 11px;
+  color: var(--text-secondary);
+  top: 10px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
     
   </style>
 </head>
@@ -568,6 +594,93 @@
         { id: 'Future', label: 'I\'m considering my future options' },
         { id: 'Professional', label: 'I need support from an IP professional' }
       ];
+
+              const sliderConfigs = {
+  timeCommitment: {
+    steps: 5, // 5 steps from -2 to 2
+    min: -2,
+    max: 2,
+    labels: {
+      '-2': 'Days',
+      '-1': 'Weeks',
+      '0': 'No preference',
+      '1': '1-12 Months',
+      '2': '12+ Months',
+    },
+    tickLabels: {
+      '-2': 'Minimal',
+      '0': 'No preference',
+      '2': 'Extended'
+    }
+  },
+  investment: {
+    steps: 5,
+    min: -2,
+    max: 2,
+    labels: {
+      '-2': 'Under $1,000',
+      '-1': 'Under $5,000',
+      '0': 'Under $10,000',
+      '1': 'Under $25,000',
+      '2': '$25,000+',
+    },
+    tickLabels: {
+      '-2': 'Low',
+      '0': 'Under $10,000',
+      '2': 'High'
+    }
+  },
+  commercialAgreements: {
+    steps: 3,
+    min: -1,
+    max: 1,
+    labels: {
+      '-1': 'Avoid agreements',
+      '0': 'No preference',
+      '1': 'Open to agreements',
+
+    },
+    tickLabels: {
+      '-3': 'Avoid',
+      '0': 'No preference',
+      '3': 'Seeking'
+    }
+  },
+  thirdPartyServices: {
+    steps: 5,
+    min: -2,
+    max: 2,
+    labels: {
+      '-2': 'Self-managed only',
+      '-1': 'Minimal assistance',
+      '0': 'No preference',
+      '1': 'Professional support',
+      '2': 'Full service solution'
+    },
+    tickLabels: {
+      '-2': 'Do it myself',
+      '0': 'No preference',
+      '2': 'Full service'
+    }
+  },
+  legalAction: {
+    steps: 5,
+    min: -2,
+    max: 2,
+    labels: {
+      '-2': 'Strongly avoid',
+      '-1': 'Prefer to avoid',
+      '0': 'No preference',
+      '1': 'Open to consider',
+      '2': 'Willing to use',
+    },
+    tickLabels: {
+      '-3': 'Opposed',
+      '0': 'No preference',
+      '3': 'Open'
+    }
+  }
+};
       
       // Initialize data
       React.useEffect(() => {
@@ -1228,13 +1341,45 @@
         }
       };
       
-      // Update preference slider
-      const updatePreference = (preference, value) => {
-        setPreferences({
-          ...preferences,
-          [preference]: value
-        });
-      };
+// Generate tick marks for a slider based on its configuration
+const generateSliderTicks = (config) => {
+  // Determine how many points to show based on config
+  const tickPoints = [];
+  
+  // For 3-point sliders
+  if (config.steps === 3) {
+    tickPoints.push(config.min, 0, config.max);
+  } 
+  // For 5-point sliders
+  else if (config.steps === 5) {
+    const step = (config.max - config.min) / 4;
+    tickPoints.push(
+      config.min,
+      config.min + step,
+      0,
+      config.max - step,
+      config.max
+    );
+  }
+  // For 7-point sliders (default)
+  else {
+    const step = (config.max - config.min) / 6;
+    tickPoints.push(
+      config.min,
+      config.min + step,
+      config.min + 2 * step,
+      0,
+      config.max - 2 * step,
+      config.max - step,
+      config.max
+    );
+  }
+  
+  return tickPoints.map(value => ({
+    value,
+    label: config.tickLabels[value] || ''
+  }));
+};
       
       // Helper to get the color class for IP right
       const getRightColor = (right) => {
@@ -1255,37 +1400,30 @@ const getRelevancyLevel = (score) => {
   return { level: 'very-low', text: '-------' };
 };
       
-      // Get preference display text
-      const getPreferenceText = (preference, value) => {
-        // Default labels for most preferences
-        const defaultLabels = {
-          '-3': 'Very low',
-          '-2': 'Low',
-          '-1': 'Somewhat low',
-          '0': 'No preference',
-          '1': 'Somewhat high',
-          '2': 'High',
-          '3': 'Very high'
-        };
-        
-        // Special labels for legal action
-        const legalLabels = {
-          '-3': 'Strongly avoid',
-          '-2': 'Avoid',
-          '-1': 'Prefer to avoid',
-          '0': 'No preference',
-          '1': 'Open to consider',
-          '2': 'Willing to use',
-          '3': 'Ready to pursue'
-        };
-        
-        // Return appropriate label based on preference type
-        if (preference === 'legalAction') {
-          return legalLabels[value];
-        }
-        
-        return defaultLabels[value];
-      };
+ // Get preference display text from slider configuration
+const getPreferenceText = (preference, value) => {
+  // Get the slider configuration for this preference
+  const config = sliderConfigs[preference];
+  
+  // Return the custom label if available
+  if (config && config.labels && config.labels[value] !== undefined) {
+    return config.labels[value];
+  }
+  
+  // Fallback default labels if no config is found
+  const defaultLabels = {
+    '-3': 'Very low',
+    '-2': 'Low',
+    '-1': 'Somewhat low',
+    '0': 'No preference',
+    '1': 'Somewhat high',
+    '2': 'High',
+    '3': 'Very high'
+  };
+  
+  return defaultLabels[value];
+};
+      
       
       // Show loading state
       if (loading) {
@@ -1438,138 +1576,150 @@ const getRelevancyLevel = (score) => {
                     <p className="mb-4">Adjust your preferences to find optimal strategies:</p>
                     
                     {/* Time Commitment slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Time commitment</div>
-                        <div className={`slider-value ${preferences.timeCommitment === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('timeCommitment', preferences.timeCommitment)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-ticks">
-                        <span>Low</span>
-                        <span>No preference</span>
-                        <span>High</span>
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min="-3"
-                        max="3"
-                        step="1"
-                        value={preferences.timeCommitment}
-                        onChange={(e) => updatePreference('timeCommitment', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
+ <div className="slider-container">
+  <div className="slider-header">
+    <div className="slider-label">Time commitment</div>
+    <div className={`slider-value ${preferences.timeCommitment === 0 ? 'neutral' : ''}`}>
+      {getPreferenceText('timeCommitment', preferences.timeCommitment)}
+    </div>
+  </div>
+  
+  <div className="slider-tick-marks">
+    {generateSliderTicks(sliderConfigs.timeCommitment).map((tick, index) => (
+      <div key={index} className="slider-tick">
+        {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+      </div>
+    ))}
+  </div>
+  
+  <input
+    type="range"
+    min={sliderConfigs.timeCommitment.min}
+    max={sliderConfigs.timeCommitment.max}
+    step="1"
+    value={preferences.timeCommitment}
+    onChange={(e) => updatePreference('timeCommitment', parseInt(e.target.value))}
+    className="slider"
+  />
+</div>
+                    
                     
                     {/* Investment level slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Investment level</div>
-                        <div className={`slider-value ${preferences.investment === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('investment', preferences.investment)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-ticks">
-                        <span>Low</span>
-                        <span>No preference</span>
-                        <span>High</span>
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min="-3"
-                        max="3"
-                        step="1"
-                        value={preferences.investment}
-                        onChange={(e) => updatePreference('investment', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
+{/* Investment Level Slider */}
+<div className="slider-container">
+  <div className="slider-header">
+    <div className="slider-label">Investment level</div>
+    <div className={`slider-value ${preferences.investment === 0 ? 'neutral' : ''}`}>
+      {getPreferenceText('investment', preferences.investment)}
+    </div>
+  </div>
+  
+  <div className="slider-tick-marks">
+    {generateSliderTicks(sliderConfigs.investment).map((tick, index) => (
+      <div key={index} className="slider-tick">
+        {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+      </div>
+    ))}
+  </div>
+  
+  <input
+    type="range"
+    min={sliderConfigs.investment.min}
+    max={sliderConfigs.investment.max}
+    step="1"
+    value={preferences.investment}
+    onChange={(e) => updatePreference('investment', parseInt(e.target.value))}
+    className="slider"
+  />
+</div>
+          
                     
                     {/* Commercial agreements slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Commercial agreements</div>
-                        <div className={`slider-value ${preferences.commercialAgreements === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('commercialAgreements', preferences.commercialAgreements)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-ticks">
-                        <span>Opposed</span>
-                        <span>No preference</span>
-                        <span>Open</span>
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min="-3"
-                        max="3"
-                        step="1"
-                        value={preferences.commercialAgreements}
-                        onChange={(e) => updatePreference('commercialAgreements', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
+ {/* Commercial Agreements Slider */}
+<div className="slider-container">
+  <div className="slider-header">
+    <div className="slider-label">Commercial agreements</div>
+    <div className={`slider-value ${preferences.commercialAgreements === 0 ? 'neutral' : ''}`}>
+      {getPreferenceText('commercialAgreements', preferences.commercialAgreements)}
+    </div>
+  </div>
+  
+  <div className="slider-tick-marks">
+    {generateSliderTicks(sliderConfigs.commercialAgreements).map((tick, index) => (
+      <div key={index} className="slider-tick">
+        {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+      </div>
+    ))}
+  </div>
+  
+  <input
+    type="range"
+    min={sliderConfigs.commercialAgreements.min}
+    max={sliderConfigs.commercialAgreements.max}
+    step="1"
+    value={preferences.commercialAgreements}
+    onChange={(e) => updatePreference('commercialAgreements', parseInt(e.target.value))}
+    className="slider"
+  />
+</div>
                     
                     {/* Third-party services slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Third-party services</div>
-                        <div className={`slider-value ${preferences.thirdPartyServices === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('thirdPartyServices', preferences.thirdPartyServices)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-ticks">
-                        <span>Opposed</span>
-                        <span>No preference</span>
-                        <span>Open</span>
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min="-3"
-                        max="3"
-                        step="1"
-                        value={preferences.thirdPartyServices}
-                        onChange={(e) => updatePreference('thirdPartyServices', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
+     {/* Third-Party Services Slider */}
+<div className="slider-container">
+  <div className="slider-header">
+    <div className="slider-label">Third-party services</div>
+    <div className={`slider-value ${preferences.thirdPartyServices === 0 ? 'neutral' : ''}`}>
+      {getPreferenceText('thirdPartyServices', preferences.thirdPartyServices)}
+    </div>
+  </div>
+  
+  <div className="slider-tick-marks">
+    {generateSliderTicks(sliderConfigs.thirdPartyServices).map((tick, index) => (
+      <div key={index} className="slider-tick">
+        {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+      </div>
+    ))}
+  </div>
+  
+  <input
+    type="range"
+    min={sliderConfigs.thirdPartyServices.min}
+    max={sliderConfigs.thirdPartyServices.max}
+    step="1"
+    value={preferences.thirdPartyServices}
+    onChange={(e) => updatePreference('thirdPartyServices', parseInt(e.target.value))}
+    className="slider"
+  />
+</div>
                     
                     {/* Legal action slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Legal action</div>
-                        <div className={`slider-value ${preferences.legalAction === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('legalAction', preferences.legalAction)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-ticks">
-                        <span>Avoid</span>
-                        <span>No preference</span>
-                        <span>Pursue</span>
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min="-3"
-                        max="3"
-                        step="1"
-                        value={preferences.legalAction}
-                        onChange={(e) => updatePreference('legalAction', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+   {/* Legal Action Slider */}
+<div className="slider-container">
+  <div className="slider-header">
+    <div className="slider-label">Legal action</div>
+    <div className={`slider-value ${preferences.legalAction === 0 ? 'neutral' : ''}`}>
+      {getPreferenceText('legalAction', preferences.legalAction)}
+    </div>
+  </div>
+  
+  <div className="slider-tick-marks">
+    {generateSliderTicks(sliderConfigs.legalAction).map((tick, index) => (
+      <div key={index} className="slider-tick">
+        {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+      </div>
+    ))}
+  </div>
+  
+  <input
+    type="range"
+    min={sliderConfigs.legalAction.min}
+    max={sliderConfigs.legalAction.max}
+    step="1"
+    value={preferences.legalAction}
+    onChange={(e) => updatePreference('legalAction', parseInt(e.target.value))}
+    className="slider"
+  />
+</div>
             
             {/* Right column - Results */}
             <div>
