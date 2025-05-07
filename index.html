@@ -510,6 +510,7 @@
         ipRights: true,
         situation: true,
         preferences: false
+        otherFactors: false
       });
       
       // Slider configurations
@@ -589,6 +590,13 @@
         thirdPartyServices: 0,
         legalAction: 0
       });
+      // State for other factors
+const [otherFactors, setOtherFactors] = React.useState({
+  onlineMarkets: 'neutral',
+  domainName: 'neutral',
+  importingGoods: 'neutral',
+  identifyParty: 'neutral'
+});
       
       // Filtered and ranked strategies
       const [filteredStrategies, setFilteredStrategies] = React.useState([]);
@@ -991,6 +999,14 @@
           [preference]: value
         });
       };
+
+    // Toggle factor selection
+const toggleFactor = (factor, value) => {
+  setOtherFactors({
+    ...otherFactors,
+    [factor]: value
+  });
+};
       
       // Helper to get the color class for IP right
       const getRightColor = (right) => {
@@ -1196,6 +1212,123 @@
                   </div>
                 )}
               </div>
+{/* Other Factors Section */}
+<div className="accordion mb-6">
+  <div 
+    className="accordion-header"
+    onClick={() => toggleAccordion('otherFactors')}
+  >
+    <div className="accordion-title-section">
+      <div className="accordion-arrow">
+        {accordions.otherFactors ? (
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        )}
+      </div>
+      <span>Other Factors</span>
+    </div>
+    
+    <div>
+      {Object.values(otherFactors).some(v => v !== 'neutral') && (
+        <span className="text-sm text-gray-500">Factors selected</span>
+      )}
+    </div>
+  </div>
+  
+  {accordions.otherFactors && (
+    <div className="accordion-content">
+      <p className="mb-4">Does the issue involve:</p>
+      
+      <div className="mb-4">
+        {/* Online marketplaces */}
+        <div className="mb-3">
+          <div className="font-medium mb-2">Online market places or advertising</div>
+          <div className="flex space-x-2">
+            <button 
+              className={`btn ${otherFactors.onlineMarkets === 'yes' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('onlineMarkets', otherFactors.onlineMarkets === 'yes' ? 'neutral' : 'yes')}
+            >
+              Yes
+            </button>
+            <button 
+              className={`btn ${otherFactors.onlineMarkets === 'no' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('onlineMarkets', otherFactors.onlineMarkets === 'no' ? 'neutral' : 'no')}
+            >
+              No
+            </button>
+          </div>
+        </div>
+        
+        {/* Domain name issues */}
+        <div className="mb-3">
+          <div className="font-medium mb-2">Domain name issues</div>
+          <div className="flex space-x-2">
+            <button 
+              className={`btn ${otherFactors.domainName === 'yes' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('domainName', otherFactors.domainName === 'yes' ? 'neutral' : 'yes')}
+            >
+              Yes
+            </button>
+            <button 
+              className={`btn ${otherFactors.domainName === 'no' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('domainName', otherFactors.domainName === 'no' ? 'neutral' : 'no')}
+            >
+              No
+            </button>
+          </div>
+        </div>
+        
+        {/* Importing goods */}
+        <div className="mb-3">
+          <div className="font-medium mb-2">Importing goods to Australia</div>
+          <div className="flex space-x-2">
+            <button 
+              className={`btn ${otherFactors.importingGoods === 'yes' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('importingGoods', otherFactors.importingGoods === 'yes' ? 'neutral' : 'yes')}
+            >
+              Yes
+            </button>
+            <button 
+              className={`btn ${otherFactors.importingGoods === 'no' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('importingGoods', otherFactors.importingGoods === 'no' ? 'neutral' : 'no')}
+            >
+              No
+            </button>
+          </div>
+        </div>
+        
+        {/* Identify the other party */}
+        <div className="mb-3">
+          <div className="font-medium mb-2">Can you identify the other party?</div>
+          <div className="flex space-x-2">
+            <button 
+              className={`btn ${otherFactors.identifyParty === 'yes' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('identifyParty', otherFactors.identifyParty === 'yes' ? 'neutral' : 'yes')}
+            >
+              Yes
+            </button>
+            <button 
+              className={`btn ${otherFactors.identifyParty === 'no' ? 'btn-primary' : 'btn-secondary'}`}
+              onClick={() => toggleFactor('identifyParty', otherFactors.identifyParty === 'no' ? 'neutral' : 'no')}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-sm text-gray-600 italic">
+        These factors will be used to enhance your strategy recommendations in future updates.
+      </div>
+    </div>
+  )}
+</div>
+              
             </div>
 
             {/* Right column - Results */}
