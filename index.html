@@ -792,7 +792,7 @@ const [otherFactors, setOtherFactors] = React.useState({
           filtered = filtered.filter(strategy => {
             const strategyRights = strategy.right.split('; ');
             return selectedRights.some(right => 
-              strategyRights.includes(right) || strategyRights.includes('Any')
+              strategyRights.includes(right) || strategyRights.includes('Any')|| strategyRights.includes('Any IP type')
             );
           });
         }
