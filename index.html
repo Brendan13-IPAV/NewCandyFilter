@@ -1719,8 +1719,10 @@ const getPreferenceText = (preference, value) => {
     onChange={(e) => updatePreference('legalAction', parseInt(e.target.value))}
     className="slider"
   />
-</div>
-                </div>
+</div> <!-- This closes the legal action slider -->
+                  </div> <!-- This closes the accordion-content -->
+                </div> <!-- This closes the accordion -->
+              </div> <!-- This closes the left column -->
             
             {/* Right column - Results */}
             <div>
@@ -1730,6 +1732,7 @@ const getPreferenceText = (preference, value) => {
                     ? 'Potential IP Strategies' 
                     : 'Select criteria to see potential strategies'}
                 </h2>
+
                 
                 {filteredStrategies.length === 0 ? (
                   <div className="bg-gray-50 p-8 text-center rounded-lg">
