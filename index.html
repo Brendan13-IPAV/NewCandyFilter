@@ -125,6 +125,7 @@
       font-size: 14px;
       margin-bottom: 16px;
     }
+    
     /* Tags */
     .tag {
       display: inline-block;
@@ -247,284 +248,6 @@
     .btn-secondary:hover {
       background-color: #F9FAFB;
     }
-
-    /* Accordion */
-    .accordion {
-      margin-bottom: 16px;
-    }
-    
-    .accordion-header {
-      background-color: white;
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-    }
-    
-    .accordion-header:hover {
-      background-color: #F9FAFB;
-    }
-
-    .accordion-arrow {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      margin-right: 8px;
-    }
-
-    .accordion-title-section {
-      display: flex;
-      align-items: center;
-    }
-
-    .accordion-content {
-      padding: 16px;
-      border: 1px solid var(--border-color);
-      border-top: none;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-    
-    /* Sliders */
-    .slider-container {
-      margin-bottom: 24px;
-    }
-    
-    .slider-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    
-    .slider-label {
-      font-weight: 500;
-    }
-    
-    .slider-value {
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 12px;
-      background-color: rgba(85, 171, 201, 0.1);
-      color: var(--teal);
-    }
-    
-    .slider-value.neutral {
-      background-color: rgba(0, 0, 0, 0.05);
-      color: var(--text-secondary);
-    }
-    
-    .slider-ticks {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-bottom: 4px;
-    }
-    
-    .slider {
-      width: 100%;
-      -webkit-appearance: none;
-      height: 4px;
-      background: var(--border-color);
-      border-radius: 2px;
-      outline: none;
-    }
-    
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
-      background: white;
-      border: 2px solid var(--teal);
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    /* Match score */
-    .match-indicator {
-      height: 6px;
-      width: 100%;
-      background-color: var(--border-color);
-      border-radius: 3px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-    
-    .match-fill {
-      height: 100%;
-      background-color: var(--teal);
-    }
-    
-    .match-text {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      margin-bottom: 16px;
-    }
-    
-    .match-score {
-      font-weight: 600;
-      color: var(--teal);
-    }
-    
-    /* Match details */
-    .match-details {
-      margin-bottom: 16px;
-    }
-    
-    .matches {
-      color: #10B981;
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-    
-    .non-matches {
-      color: #EF4444;
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-    
-    .match-list {
-      padding-left: 24px;
-      margin-top: 4px;
-      margin-bottom: 12px;
-    }
-    
-    .match-list li {
-      font-size: 13px;
-      margin-bottom: 4px;
-    }
-    
-    .match-list.good li {
-      color: #10B981;
-    }
-    
-    .match-list.bad li {
-      color: #EF4444;
-    }
-    
-    /* Grid layout */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    
-    @media (min-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .grid {
-        grid-template-columns: 2fr 3fr;
-      }
-    }
-    
-    /* Radio button group */
-    .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    
-    .radio-button {
-      display: inline-block;
-      padding: 8px 12px;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .radio-button.selected {
-      background-color: var(--teal);
-      color: white;
-      border-color: var(--teal);
-    }
-    
-    .radio-button:hover:not(.selected) {
-      background-color: #F0F4F8;
-    }
-/* Relevancy indicator styles */
-    .relevancy-indicator {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    .relevancy-badge {
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .relevancy-very-high {
-      background-color: #22c55e;
-      color: white;
-    }
-
-    .relevancy-high {
-      background-color: #34d399;
-      color: white;
-    }
-
-    .relevancy-medium {
-      background-color: #fbbf24;
-      color: white;
-    }
-
-    .relevancy-low {
-      background-color: #fb923c;
-      color: white;
-    }
-
-    .relevancy-very-low {
-      background-color: #ef4444;
-      color: white;
-    }
-
-    /* Tick marks for sliders */
-    .slider-tick-marks {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      margin: 8px 0;
-      position: relative;
-      height: 20px;
-    }
-
-    .slider-tick {
-      width: 1px;
-      height: 8px;
-      background-color: var(--border-color);
-      position: relative;
-    }
-
-    .slider-tick-label {
-      position: absolute;
-      font-size: 11px;
-      color: var(--text-secondary);
-      top: 10px;
-      transform: translateX(-50%);
-      white-space: nowrap;
-    }
   </style>
 </head>
 <body>
@@ -550,6 +273,234 @@
     </div>
   </footer>
 
+  <style>
+  /* Accordion */
+  .accordion {
+    margin-bottom: 16px;
+  }
+  
+  .accordion-header {
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .accordion-header:hover {
+    background-color: #F9FAFB;
+  }
+  
+  .accordion-arrow {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888; /* mid-gray color */
+    margin-right: 8px;
+  }
+
+  .accordion-title-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .accordion-content {
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  /* Sliders */
+  .slider-container {
+    margin-bottom: 24px;
+  }
+  
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .slider-label {
+    font-weight: 500;
+  }
+  
+  .slider-value {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: rgba(85, 171, 201, 0.1);
+    color: var(--teal);
+  }
+  
+  .slider-value.neutral {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-secondary);
+  }
+  
+  .slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  
+  .slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    outline: none;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 2px solid var(--teal);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  /* Match details */
+  .match-details {
+    margin-bottom: 16px;
+  }
+  
+  .matches {
+    color: #10B981;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .non-matches {
+    color: #EF4444;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .match-list {
+    padding-left: 24px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+  }
+  
+  .match-list li {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  
+  .match-list.good li {
+    color: #10B981;
+  }
+  
+  .match-list.bad li {
+    color: #EF4444;
+  }
+  
+  /* Grid layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+  
+  /* Radio button group */
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .radio-button {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .radio-button.selected {
+    background-color: var(--teal);
+    color: white;
+    border-color: var(--teal);
+  }
+  
+  .radio-button:hover:not(.selected) {
+    background-color: #F0F4F8;
+  }
+
+  /* Relevancy indicator styles */
+  .relevancy-indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .relevancy-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .relevancy-very-high {
+    background-color: #22c55e;
+    color: white;
+  }
+
+  .relevancy-high {
+    background-color: #84cc16;
+    color: white;
+  }
+
+  .relevancy-medium {
+    background-color: #eab308;
+    color: white;
+  }
+
+  .relevancy-low {
+    background-color: #f97316;
+    color: white;
+  }
+
+  .relevancy-very-low {
+    background-color: #ef4444;
+    color: white;
+  }
+</style>
+
   <script type="text/babel">
     const IPStrategyFinder = () => {
       // State for app data
@@ -560,6 +511,73 @@
         situation: true,
         preferences: false
       });
+      
+      // Slider configurations
+      const sliderConfigs = {
+        timeCommitment: {
+          min: -2,
+          max: 2,
+          steps: 5,
+          labels: {
+            '-2': 'Days',
+            '-1': 'Weeks',
+            '0': 'No preference',
+            '1': '1-12 Months',
+            '2': '12+ Months'
+          },
+          tickLabels: ['Minimal', 'No preference', 'Extended']
+        },
+        investment: {
+          min: -2,
+          max: 2,
+          steps: 5,
+          labels: {
+            '-2': 'Under $1,000',
+            '-1': 'Under $5,000',
+            '0': 'Under $10,000',
+            '1': 'Under $25,000',
+            '2': '$25,000+'
+          },
+          tickLabels: ['Low', 'Under $10,000', 'High']
+        },
+        commercialAgreements: {
+          min: -1,
+          max: 1,
+          steps: 3,
+          labels: {
+            '-1': 'Avoid agreements',
+            '0': 'No preference',
+            '1': 'Open to agreements'
+          },
+          tickLabels: ['Avoid', 'No preference', 'Seeking']
+        },
+        thirdPartyServices: {
+          min: -2,
+          max: 2,
+          steps: 5,
+          labels: {
+            '-2': 'Self-managed only',
+            '-1': 'Minimal assistance',
+            '0': 'No preference',
+            '1': 'Professional support',
+            '2': 'Full service solution'
+          },
+          tickLabels: ['Do it myself', 'No preference', 'Full service']
+        },
+        legalAction: {
+          min: -2,
+          max: 2,
+          steps: 5,
+          labels: {
+            '-2': 'Strongly avoid',
+            '-1': 'Prefer to avoid',
+            '0': 'No preference',
+            '1': 'Open to consider',
+            '2': 'Willing to use'
+          },
+          tickLabels: ['Opposed', 'No preference', 'Open']
+        }
+      };
       
       // State for user selections
       const [selectedRights, setSelectedRights] = React.useState([]);
@@ -593,93 +611,6 @@
         { id: 'Future', label: 'I\'m considering my future options' },
         { id: 'Professional', label: 'I need support from an IP professional' }
       ];
-
-      // Enhanced slider configuration
-      const sliderConfigs = {
-        timeCommitment: {
-          steps: 5, // 5 steps from -2 to 2
-          min: -2,
-          max: 2,
-          labels: {
-            '-2': 'Days',
-            '-1': 'Weeks',
-            '0': 'No preference',
-            '1': '1-12 Months',
-            '2': '12+ Months',
-          },
-          tickLabels: {
-            '-2': 'Minimal',
-            '0': 'No preference',
-            '2': 'Extended'
-          }
-        },
-        investment: {
-          steps: 5,
-          min: -2,
-          max: 2,
-          labels: {
-            '-2': 'Under $1,000',
-            '-1': 'Under $5,000',
-            '0': 'Under $10,000',
-            '1': 'Under $25,000',
-            '2': '$25,000+',
-          },
-          tickLabels: {
-            '-2': 'Low',
-            '0': 'Under $10,000',
-            '2': 'High'
-          }
-        },
-        commercialAgreements: {
-          steps: 3,
-          min: -1,
-          max: 1,
-          labels: {
-            '-1': 'Avoid agreements',
-            '0': 'No preference',
-            '1': 'Open to agreements',
-          },
-          tickLabels: {
-            '-1': 'Avoid',
-            '0': 'No preference',
-            '1': 'Seeking'
-          }
-        },
-        thirdPartyServices: {
-          steps: 5,
-          min: -2,
-          max: 2,
-          labels: {
-            '-2': 'Self-managed only',
-            '-1': 'Minimal assistance',
-            '0': 'No preference',
-            '1': 'Professional support',
-            '2': 'Full service solution'
-          },
-          tickLabels: {
-            '-2': 'Do it myself',
-            '0': 'No preference',
-            '2': 'Full service'
-          }
-        },
-        legalAction: {
-          steps: 5,
-          min: -2,
-          max: 2,
-          labels: {
-            '-2': 'Strongly avoid',
-            '-1': 'Prefer to avoid',
-            '0': 'No preference',
-            '1': 'Open to consider',
-            '2': 'Willing to use',
-          },
-          tickLabels: {
-            '-2': 'Opposed',
-            '0': 'No preference',
-            '2': 'Open'
-          }
-        }
-      };
 
       // Initialize data
       React.useEffect(() => {
@@ -745,7 +676,6 @@
               legalAction: 7
             }
           },
-
           {
             id: 5,
             overtitle: "Trade mark registration revocation",
@@ -806,7 +736,6 @@
               legalAction: 10
             }
           },
-
           {
             id: 9,
             overtitle: "World IP Organisation (WIPO)",
@@ -836,165 +765,13 @@
               thirdPartyServices: 7,
               legalAction: 4
             }
-          },
-          {
-            id: 11,
-            overtitle: "ASBFEO",
-            title: "Access help tailored to resolve business disputes",
-            description: "Australia Small Business & Family Enterprise Ombudsman (ASBFEO).",
-            responseType: ["Enforcement", "Accused", "Professional"],
-            right: "Any",
-            scores: {
-              timeCommitment: 4,
-              investment: 3,
-              commercialAgreements: 5,
-              thirdPartyServices: 6,
-              legalAction: 3
-            }
-          },
-          {
-            id: 12,
-            overtitle: "Mediation",
-            title: "Resolve IP issues with the help of a third party",
-            description: "Invite the other party to enter into mediation to agree to mutually acceptable agreement.",
-            responseType: ["Enforcement", "Professional"],
-            right: "Any",
-            scores: {
-              timeCommitment: 5,
-              investment: 4,
-              commercialAgreements: 8,
-              thirdPartyServices: 7,
-              legalAction: 2
-            }
-          },
-
-          {
-            id: 13,
-            overtitle: "Arbitration",
-            title: "Resolve IP issues with the help of a third party",
-            description: "Agree to be bound by the decision of a highly qualified third party assessment.",
-            responseType: ["Enforcement", "Professional"],
-            right: "Any",
-            scores: {
-              timeCommitment: 6,
-              investment: 6,
-              commercialAgreements: 8,
-              thirdPartyServices: 8,
-              legalAction: 5
-            }
-          },
-          {
-            id: 14,
-            overtitle: "Letter of demand",
-            title: "Demand the other party stops infringing",
-            description: "Send a letter to the infringing party notifying them of potential infringement.",
-            responseType: ["Enforcement", "Professional"],
-            right: "Any",
-            scores: {
-              timeCommitment: 3,
-              investment: 2,
-              commercialAgreements: 4,
-              thirdPartyServices: 5,
-              legalAction: 3
-            }
-          },
-          {
-            id: 15,
-            overtitle: "Informal contact",
-            title: "Provide an opportunity to stop infringement",
-            description: "Alert the alleged infringer of your registered rights to allow them to stop infringing.",
-            responseType: ["Enforcement"],
-            right: "Any",
-            scores: {
-              timeCommitment: 2,
-              investment: 1,
-              commercialAgreements: 3,
-              thirdPartyServices: 1,
-              legalAction: 1
-            }
-          },
-          {
-            id: 16,
-            overtitle: "Informal contact",
-            title: "Respond informally to accusations of IP infringement",
-            description: "Let the accuser know about your circumstances.",
-            responseType: ["Accused"],
-            right: "Any",
-            scores: {
-              timeCommitment: 2,
-              investment: 1,
-              commercialAgreements: 3,
-              thirdPartyServices: 1,
-              legalAction: 1
-            }
-          },
-
-          {
-            id: 17,
-            overtitle: "Negotiation",
-            title: "Agree to a commercial arrangement",
-            description: "Work with an IP professional to come to an agreement with another party.",
-            responseType: ["Enforcement", "Accused", "Professional"],
-            right: "Any",
-            scores: {
-              timeCommitment: 5,
-              investment: 4,
-              commercialAgreements: 9,
-              thirdPartyServices: 6,
-              legalAction: 2
-            }
-          },
-          {
-            id: 18,
-            overtitle: "Takedown request",
-            title: "Stop infringement facilitated online",
-            description: "Request infringing material is removed from online marketplaces and platforms.",
-            responseType: ["Enforcement"],
-            right: "Trade mark; Copyright",
-            scores: {
-              timeCommitment: 3,
-              investment: 2,
-              commercialAgreements: 2,
-              thirdPartyServices: 3,
-              legalAction: 2
-            }
-          },
-          {
-            id: 19,
-            overtitle: "Report IP crime or safety concerns",
-            title: "Prevent risks to public interest",
-            description: "Inform Government about risks to public health, crime, counterfeiting, frauds & scams.",
-            responseType: ["Enforcement"],
-            right: "Any",
-            scores: {
-              timeCommitment: 3,
-              investment: 1,
-              commercialAgreements: 1,
-              thirdPartyServices: 3,
-              legalAction: 2
-            }
-          },
-          {
-            id: 20,
-            overtitle: "Notice of Objection",
-            title: "Stop infringing goods entering the country",
-            description: "Lodge a notice of objection with the Australian Border Force.",
-            responseType: ["Enforcement", "Proactive", "Professional"],
-            right: "Trade mark; Copyright",
-            scores: {
-              timeCommitment: 4,
-              investment: 4,
-              commercialAgreements: 2,
-              thirdPartyServices: 6,
-              legalAction: 5
-            }
           }
         ];
         
         setStrategies(strategiesData);
         setLoading(false);
       }, []);
-
+      
       // Calculate filtered and ranked strategies when user selections change
       React.useEffect(() => {
         if (loading) return;
@@ -1034,14 +811,18 @@
             // Skip if user has no preference (value is 0)
             if (prefValue === 0) return { score: 0, weight: 0 };
             
+            // Get the configuration for this preference
+            const config = sliderConfigs[preference];
+            const maxValue = config.max;
+            
             // For positive preferences (user wants high value)
             if (prefValue > 0) {
-              // Convert preference range -3 to 3 to expected value 0-10
-              const expectedValue = (prefValue / 3) * 10;
+              // Convert the preference value to expected strategy value (0-10 scale)
+              const expectedValue = (prefValue / maxValue) * 10;
               // Calculate match (10 is perfect match, 0 is worst)
               const score = Math.max(0, 10 - Math.abs(expectedValue - strategyValue));
               // Use preference strength as weight
-              const weight = Math.abs(prefValue) / 3;
+              const weight = Math.abs(prefValue) / maxValue;
               
               return { 
                 score, 
@@ -1054,7 +835,7 @@
               // For negative preferences, lower strategy values are better
               const score = Math.max(0, 10 - strategyValue);
               // Use preference strength as weight
-              const weight = Math.abs(prefValue) / 3;
+              const weight = Math.abs(prefValue) / Math.abs(config.min);
               
               return {
                 score,
@@ -1064,7 +845,7 @@
             }
           };
 
-         // Calculate matches for each preference
+          // Calculate matches for each preference ------- Section 5 from claude
           const timeMatch = calculatePreferenceMatch(
             'timeCommitment', 
             preferences.timeCommitment, 
@@ -1135,7 +916,7 @@
               nonMatches.push('Legal action');
             }
           }
-
+          
           // Calculate overall weighted score
           totalScore += timeMatch.score * timeMatch.weight;
           totalScore += investmentMatch.score * investmentMatch.weight;
@@ -1166,7 +947,16 @@
         ranked.sort((a, b) => b.matchScore - a.matchScore);
         
         setFilteredStrategies(ranked);
-      }, [loading, strategies, selectedRights, selectedSituations, preferences]);
+      }, [loading, strategies, selectedRights, selectedSituations, preferences]);   //----- end of section 5 from claude
+
+      // Helper function to get relevancy level text and CSS class
+      const getRelevancyLevel = (score) => {
+        if (score >= 90) return { level: 'very-high', text: 'Very High' };
+        if (score >= 75) return { level: 'high', text: 'High' };
+        if (score >= 50) return { level: 'medium', text: 'Medium' };
+        if (score >= 25) return { level: 'low', text: 'Low' };
+        return { level: 'very-low', text: 'Very Low' };
+      };
       
       // Toggle section accordion
       const toggleAccordion = (section) => {
@@ -1194,52 +984,12 @@
         }
       };
       
-      // Update preference slider - THIS WAS MISSING
+      // Update preference slider
       const updatePreference = (preference, value) => {
         setPreferences({
           ...preferences,
           [preference]: value
         });
-      };
-
-      // Generate tick marks for a slider based on its configuration
-      const generateSliderTicks = (config) => {
-        // Determine how many points to show based on config
-        const tickPoints = [];
-        
-        // For 3-point sliders
-        if (config.steps === 3) {
-          tickPoints.push(config.min, 0, config.max);
-        } 
-        // For 5-point sliders
-        else if (config.steps === 5) {
-          const step = (config.max - config.min) / 4;
-          tickPoints.push(
-            config.min,
-            config.min + step,
-            0,
-            config.max - step,
-            config.max
-          );
-        }
-        // For 7-point sliders (default)
-        else {
-          const step = (config.max - config.min) / 6;
-          tickPoints.push(
-            config.min,
-            config.min + step,
-            config.min + 2 * step,
-            0,
-            config.max - 2 * step,
-            config.max - step,
-            config.max
-          );
-        }
-        
-        return tickPoints.map(value => ({
-          value,
-          label: config.tickLabels[value] || ''
-        }));
       };
       
       // Helper to get the color class for IP right
@@ -1251,40 +1001,19 @@
         if (right.includes('Copyright')) return 'copyright';
         return 'any';
       };
-
-      // Get relevancy level based on match score
-      const getRelevancyLevel = (score) => {
-        if (score >= 90) return { level: 'very-high', text: 'Very High Match' };
-        if (score >= 75) return { level: 'high', text: 'High Match' };
-        if (score >= 50) return { level: 'medium', text: 'Medium Match' };
-        if (score >= 25) return { level: 'low', text: 'Low Match' };
-        return { level: 'very-low', text: 'Very Low Match' };
-      };
       
-      // Get preference display text from slider configuration
+      // Get preference display text based on slider config
       const getPreferenceText = (preference, value) => {
-        // Get the slider configuration for this preference
+        // Get the label from the slider config
         const config = sliderConfigs[preference];
-        
-        // Return the custom label if available
         if (config && config.labels && config.labels[value] !== undefined) {
           return config.labels[value];
         }
         
-        // Fallback default labels if no config is found
-        const defaultLabels = {
-          '-3': 'Very low',
-          '-2': 'Low',
-          '-1': 'Somewhat low',
-          '0': 'No preference',
-          '1': 'Somewhat high',
-          '2': 'High',
-          '3': 'Very high'
-        };
-        
-        return defaultLabels[value];
+        // Fallback if no specific label is defined
+        return value === 0 ? 'No preference' : `Value: ${value}`;
       };
-
+      
       // Show loading state
       if (loading) {
         return (
@@ -1293,7 +1022,7 @@
           </div>
         );
       }
-      
+
       return (
         <div>
           <h1 className="text-3xl font-bold mb-6" style={{ color: 'var(--teal)' }}>IP Strategy Finder</h1>
@@ -1303,7 +1032,6 @@
             <div>
               {/* IP Rights Section */}
               <div className="accordion mb-6">
-               
                 <div 
                   className="accordion-header"
                   onClick={() => toggleAccordion('ipRights')}
@@ -1329,8 +1057,8 @@
                     )}
                   </div>
                 </div>
-
-               {accordions.ipRights && (
+                
+                {accordions.ipRights && (
                   <div className="accordion-content">
                     <p className="mb-4">Select the IP rights you're interested in:</p>
                     
@@ -1403,7 +1131,7 @@
                 )}
               </div>
 
-         {/* Preferences Section */}
+        {/* Preferences Section */}
               <div className="accordion mb-6">
                 <div 
                   className="accordion-header"
@@ -1435,130 +1163,42 @@
                   <div className="accordion-content">
                     <p className="mb-4">Adjust your preferences to find optimal strategies:</p>
                     
-                    {/* Time Commitment slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Time commitment</div>
-                        <div className={`slider-value ${preferences.timeCommitment === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('timeCommitment', preferences.timeCommitment)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-tick-marks">
-                        {generateSliderTicks(sliderConfigs.timeCommitment).map((tick, index) => (
-                          <div key={index} className="slider-tick">
-
-                     {/* Investment level slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Investment level</div>
-                        <div className={`slider-value ${preferences.investment === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('investment', preferences.investment)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-tick-marks">
-                        {generateSliderTicks(sliderConfigs.investment).map((tick, index) => (
-                          <div key={index} className="slider-tick">
-                            {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+                    {/* Render sliders dynamically based on config */}
+                    {Object.entries(sliderConfigs).map(([prefKey, config]) => (
+                      <div className="slider-container" key={prefKey}>
+                        <div className="slider-header">
+                          <div className="slider-label">
+                            {/* Display capitalized label */}
+                            {prefKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                           </div>
-                        ))}
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min={sliderConfigs.investment.min}
-                        max={sliderConfigs.investment.max}
-                        step="1"
-                        value={preferences.investment}
-                        onChange={(e) => updatePreference('investment', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    
-                    {/* Commercial agreements slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Commercial agreements</div>
-                        <div className={`slider-value ${preferences.commercialAgreements === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('commercialAgreements', preferences.commercialAgreements)}
-                        </div>
-                      </div>
-                      
-                      <div className="slider-tick-marks">
-                        {generateSliderTicks(sliderConfigs.commercialAgreements).map((tick, index) => (
-                          <div key={index} className="slider-tick">
-                            {tick.label && <div className="slider-tick-label">{tick.label}</div>}
+                          <div className={`slider-value ${preferences[prefKey] === 0 ? 'neutral' : ''}`}>
+                            {getPreferenceText(prefKey, preferences[prefKey])}
                           </div>
-                        ))}
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min={sliderConfigs.commercialAgreements.min}
-                        max={sliderConfigs.commercialAgreements.max}
-                        step="1"       
-                      {/* Third-party services slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Third-party services</div>
-                        <div className={`slider-value ${preferences.thirdPartyServices === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('thirdPartyServices', preferences.thirdPartyServices)}
                         </div>
-                      </div>
-                      
-                      <div className="slider-tick-marks">
-                        {generateSliderTicks(sliderConfigs.thirdPartyServices).map((tick, index) => (
-                          <div key={index} className="slider-tick">
-                            {tick.label && <div className="slider-tick-label">{tick.label}</div>}
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min={sliderConfigs.thirdPartyServices.min}
-                        max={sliderConfigs.thirdPartyServices.max}
-                        step="1"
-                        value={preferences.thirdPartyServices}
-                        onChange={(e) => updatePreference('thirdPartyServices', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
-                    
-                    {/* Legal action slider */}
-                    <div className="slider-container">
-                      <div className="slider-header">
-                        <div className="slider-label">Legal action</div>
-                        <div className={`slider-value ${preferences.legalAction === 0 ? 'neutral' : ''}`}>
-                          {getPreferenceText('legalAction', preferences.legalAction)}
+                        
+                        <div className="slider-ticks">
+                          {config.tickLabels.map((label, i) => (
+                            <span key={i}>{label}</span>
+                          ))}
                         </div>
+                        
+                        <input
+                          type="range"
+                          min={config.min}
+                          max={config.max}
+                          step={1}
+                          value={preferences[prefKey]}
+                          onChange={(e) => updatePreference(prefKey, parseInt(e.target.value))}
+                          className="slider"
+                        />
                       </div>
-                      
-                      <div className="slider-tick-marks">
-                        {generateSliderTicks(sliderConfigs.legalAction).map((tick, index) => (
-                          <div key={index} className="slider-tick">
-                            {tick.label && <div className="slider-tick-label">{tick.label}</div>}
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min={sliderConfigs.legalAction.min}
-                        max={sliderConfigs.legalAction.max}
-                        step="1"
-                        value={preferences.legalAction}
-                        onChange={(e) => updatePreference('legalAction', parseInt(e.target.value))}
-                        className="slider"
-                      />
-                    </div>
+                    ))}
                   </div>
                 )}
               </div>
             </div>
 
-           {/* Right column - Results */}
+            {/* Right column - Results */}
             <div>
               <div className="card">
                 <h2 className="text-xl font-bold mb-4" style={{ color: 'var(--teal)' }}>
@@ -1582,6 +1222,9 @@
                       const rights = strategy.right.split('; ');
                       const mainRight = rights[0];
                       const borderClass = `border-${getRightColor(mainRight)}`;
+                      
+                      // Get relevancy information
+                      const relevancy = getRelevancyLevel(strategy.matchScore);
                       
                       return (
                         <div key={strategy.id} className={`strategy-card ${borderClass}`}>
@@ -1609,15 +1252,15 @@
                                 </span>
                               ))}
                             </div>
-                          </div>       
-
+                          </div>
+                          
                           {/* Right side - Match details */}
                           <div className="card-right">
                             <div>
                               <div className="relevancy-indicator">
                                 <span>Relevancy</span>
-                                <span className={`relevancy-badge relevancy-${getRelevancyLevel(strategy.matchScore).level}`}>
-                                  {getRelevancyLevel(strategy.matchScore).text}
+                                <span className={`relevancy-badge relevancy-${relevancy.level}`}>
+                                  {relevancy.text}
                                 </span>
                               </div>
                             </div>
@@ -1666,5 +1309,7 @@
       document.getElementById('app')
     );
   </script>
-</body>
-</html>
+      
+
+      
+  
