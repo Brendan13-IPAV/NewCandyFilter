@@ -1340,6 +1340,13 @@
           setSelectedSituations([...selectedSituations, situationId]);
         }
       };
+
+      const updatePreference = (preference, value) => {
+  setPreferences({
+    ...preferences,
+    [preference]: value
+  });
+};
       
 // Generate tick marks for a slider based on its configuration
 const generateSliderTicks = (config) => {
